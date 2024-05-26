@@ -3,23 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>簡單登入頁面</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>
 </head>
 <body>
-    <div class="login-container">
-        <h2>登入</h2>
-        <form id="loginForm">
-            <label for="username">帳號:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">密碼:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">登入</button>
-        </form>
-        <div id="message" class="hidden">
-            <img src="success.jpg" alt="登入成功圖片">
-        </div>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <div id="successMessage" style="display: none;">
+        <h3>Login Successful!</h3>
     </div>
-    <script src="scripts.js"></script>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Check username and password
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Replace these values with your actual username and password
+            var correctUsername = 'user';
+            var correctPassword = 'password';
+
+            if (username === correctUsername && password === correctPassword) {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+            } else {
+                alert('Incorrect username or password. Please try again.');
+            }
+        });
+    </script>
 </body>
 </html>
